@@ -29,6 +29,7 @@ if (startBreatheBtn && preloadOverlay) {
 
     // ensure audio is initialised
     //await initAudioIfNeeded();
+    await Tone.start();
   }, { once: true });
 }
 
@@ -469,7 +470,11 @@ async function initAudioIfNeeded() {
   started = true;
   playing = true;
 
-  await Tone.start();
+  // 確保 Tone.js 音訊環境已經啟動
+  if (Tone.context.state !== "running") {
+    await Tone.start();
+  }
+  
   setupMusic();
 
   noise.start();
