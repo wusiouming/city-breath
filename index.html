@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Listen to the Breath of City</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+  <script type="importmap">
+    {
+      "imports": {
+        "tone": "https://esm.sh/tone@14.8.49"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="preload-overlay" role="dialog" aria-modal="true" aria-label="Start">
+    <div class="overlay-inner">
+      <div class="overlay-text">Use headphones for better experience.</div>
+      <button id="start-breathe" class="overlay-button" aria-label="Start breathing">Click<br>TO BREATHE.</button>
+    </div>
+  </div>
+  <div id="app">
+    <div class="visual">
+      <div class="city-ring"></div>
+      <div class="lung">
+        <div class="lung-core"></div>
+
+        <!-- center helper text shown before upload -->
+        <div id="upload-hint-center" class="upload-hint-center" aria-hidden="false">
+          Upload a photo to hear the breath...
+        </div>
+
+        <div class="photo-preview">
+          <img id="photo-preview-img" alt="Uploaded city fragment" />
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric-block">
+          <span class="label">Green space</span>
+          <span class="value" id="green-value">42%</span>
+        </div>
+        <div class="metric-block">
+          <span class="label">Breath rate</span>
+          <span class="value" id="breath-value">7.0 / min</span>
+        </div>
+        <div class="metric-block">
+          <span class="label">Calm index</span>
+          <span class="value" id="calm-value">0.68</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="upload-row">
+        <label class="upload-button">
+          <input id="photo-input" type="file" accept="image/*" />
+          Use a photo
+        </label>
+        <span class="upload-hint">Estimate green from your image</span>
+      </div>
+
+      <div class="slider-row">
+        <span class="slider-label">Green space</span>
+        <input id="green-slider" type="range" min="5" max="90" value="42" step="1" disabled aria-disabled="true" tabindex="-1" />
+      </div>
+      <div class="hint-row">
+        <span class="hint-left">Dense concrete</span>
+        <span class="hint-right">Abundant canopy</span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
